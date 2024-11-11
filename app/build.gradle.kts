@@ -7,6 +7,9 @@ plugins {
 android {
     namespace = "com.example.tiptopf"
     compileSdk = 35
+    buildFeatures {
+        compose = true
+    }
 
     defaultConfig {
         applicationId = "com.example.tiptopf"
@@ -40,7 +43,21 @@ android {
 }
 
 dependencies {
-
+    val composeBom = platform("androidx.compose:compose-bom:2024.09.03")
+    implementation(composeBom)
+    androidTestImplementation(composeBom)
+    // Material Design 3
+    implementation(libs.material3)
+    // material Icons
+    implementation(libs.androidx.material.icons.extended)
+    // Android Studio Preview support
+    implementation(libs.ui.tooling.preview)
+    debugImplementation(libs.ui.tooling)
+    // UI Tests
+    androidTestImplementation(libs.ui.test.junit4)
+    debugImplementation(libs.ui.test.manifest)
+    // Integration withLiveData
+    implementation(libs.androidx.runtime.livedata)
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.lifecycle.runtime.ktx)
     implementation(libs.androidx.activity.compose)
